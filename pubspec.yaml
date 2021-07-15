@@ -29,11 +29,7 @@ dependencies:
   cupertino_icons: ^1.0.3
   get: ^4.1.4
   google_fonts: ^2.1.0
-  video_player: ^2.1.4
-  flick_video_player: ^0.3.1
-  visibility_detector: ^0.2.0
   unicons: ^2.0.1
-  change_app_package_name: ^1.0.0
 
 dev_dependencies:
   flutter_test:
