@@ -80,7 +80,7 @@ class FoodCard extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 12),
                           child: Text(
-                            '${food.price} VND',
+                            '${food.price} VNĐ',
                             style: GoogleFonts.montserrat(
                               fontWeight: FontWeight.w600,
                               fontSize: 16,

@@ -3,12 +3,6 @@ import 'package:food_order/widgets/profile/body.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({
-    Key? key,
-    required this.fullName,
-  }) : super(key: key);
-  final String fullName;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +10,7 @@ class ProfileScreen extends StatelessWidget {
         children: [
           ProfileAppBar(),
           ProfileBody(
-            fullName: fullName,
+            fullName: 'Pham Duy',
             email: 'phamduy@gmail.com',
           ),
         ],

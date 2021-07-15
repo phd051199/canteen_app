@@ -1,4 +1,3 @@
-import 'package:food_order/controllers/auth/login.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:food_order/widgets/cart/cart.dart';
 import 'package:food_order/widgets/home/body.dart';
@@ -33,7 +32,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final LoginController loginController = Get.put(LoginController());
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -41,30 +39,30 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.only(left: 12),
           child: Text(
             _selectedIndex == 0
-                ? 'Xin chào, ${loginController.currentUser.value} 👋'
+                ? 'Xin chào 👋'
                 : _selectedIndex == 1
-                    ? 'Giỏ hàng'
+                    ? 'Giỏ hàng 🛒'
                     : '',
             style: GoogleFonts.montserrat(
               color: primaryTextColor,
               fontWeight: FontWeight.w600,
-              fontSize: 20,
+              fontSize: 22,
             ),
           ),
         ),
         centerTitle: false,
-        bottom: PreferredSize(
-          preferredSize: Size.fromHeight(70),
-          child: _selectedIndex == 0 ? SearchBar() : Container(),
-        ),
+        bottom: _selectedIndex == 0
+            ? PreferredSize(
+                preferredSize: Size.fromHeight(70),
+                child: SearchBar(),
+              )
+            : null,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 24.0),
             child: GestureDetector(
               onTap: () => Get.to(
-                () => ProfileScreen(
-                  fullName: loginController.currentUser.value,
-                ),
+                () => ProfileScreen(),
               ),
               child: DecoratedBox(
                 decoration: BoxDecoration(

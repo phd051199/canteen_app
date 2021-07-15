@@ -6,6 +6,9 @@ class ProfileAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      iconTheme: IconThemeData(
+        color: Colors.white,
+      ),
       flexibleSpace: Container(
         child: context.isPortrait
             ? Image(
@@ -15,13 +18,6 @@ class ProfileAppBar extends StatelessWidget {
                 color: Color(0xff2A3447).withOpacity(0.5),
               )
             : null,
-      ),
-      leading: Padding(
-        padding: const EdgeInsets.only(left: 12),
-        child: IconButton(
-          icon: Icon(Icons.arrow_back_rounded),
-          onPressed: () => Get.back(),
-        ),
       ),
       title: Text(
         'Profile',

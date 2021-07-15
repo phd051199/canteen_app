@@ -17,7 +17,11 @@ class RegisterScreen extends StatelessWidget {
     TextEditingController retypePasswordInputController =
         TextEditingController();
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: secondaryBGColor,
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32),
         child: SingleChildScrollView(

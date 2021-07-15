@@ -11,7 +11,11 @@ class ForgotPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController emailInputController = new TextEditingController();
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: secondaryBGColor,
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 32),
         child: SingleChildScrollView(

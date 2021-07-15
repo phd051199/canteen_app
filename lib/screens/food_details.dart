@@ -1,5 +1,7 @@
+import 'package:food_order/controllers/cart/cart.dart';
 import 'package:food_order/models/food.dart';
 import 'package:flutter/material.dart';
+import 'package:food_order/screens/home.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:food_order/widgets/login/button.dart';
 import 'package:get/get.dart';
@@ -31,16 +33,20 @@ class _FoodDetailsState extends State<FoodDetails> {
 
   @override
   Widget build(BuildContext context) {
+    final CartController cartController = Get.put(CartController());
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: secondaryBGColor,
+        ),
         leading: Padding(
           padding: const EdgeInsets.only(left: 12),
           child: IconButton(
             icon: Icon(
-              Icons.arrow_back_rounded,
+              Icons.arrow_back_ios_new,
               color: secondaryBGColor,
             ),
-            onPressed: () => Get.back(),
+            onPressed: () => Get.to(() => HomeScreen()),
           ),
         ),
         centerTitle: false,
@@ -69,6 +75,17 @@ class _FoodDetailsState extends State<FoodDetails> {
                 child: Image.network(
                   widget.food.image,
                   width: Get.width * 0.88,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 24, top: 24),
+              child: Text(
+                'Giá: ${widget.food.price} VNĐ',
+                style: GoogleFonts.montserrat(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 20,
+                  color: primaryTextColor,
                 ),
               ),
             ),
@@ -141,7 +158,7 @@ class _FoodDetailsState extends State<FoodDetails> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 24, top: 28, bottom: 16),
+              padding: const EdgeInsets.only(left: 24, top: 24, bottom: 16),
               child: Text(
                 'Mô tả chi tiết',
                 style: GoogleFonts.montserrat(
@@ -169,7 +186,10 @@ class _FoodDetailsState extends State<FoodDetails> {
         padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 32),
         child: AuthButton(
           btnLabel: 'Thêm vào giỏ hàng',
-          onPressed: () {},
+          onPressed: () {
+            cartController.addOrder(widget.food, _counter);
+            print(cartController.orderList);
+          },
           btnColor: secondaryBGColor,
           textColor: Colors.white,
         ),
