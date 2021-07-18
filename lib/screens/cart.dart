@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_order/controllers/calc_total.dart';
 import 'package:food_order/controllers/cart/cart.dart';
 import 'package:food_order/services/cart.dart';
+import 'package:food_order/services/order.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:food_order/widgets/cart/cart.dart';
 import 'package:food_order/widgets/login/button.dart';
@@ -13,6 +14,7 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController inputController = TextEditingController();
     return GetX<CartController>(
       init: CartController(),
       builder: (_) => Column(
@@ -70,7 +72,67 @@ class CartPage extends StatelessWidget {
                 ),
                 AuthButton(
                   btnLabel: 'Tiến hành đặt hàng',
-                  onPressed: _.cartList.length == 0 ? null : () {},
+                  onPressed: _.cartList.length == 0
+                      ? null
+                      : () {
+                          Get.dialog(
+                            AlertDialog(
+                              content: SizedBox(
+                                height: 180,
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      height: 12,
+                                    ),
+                                    TextField(
+                                      controller: inputController,
+                                      decoration: InputDecoration(
+                                        labelText: 'Bàn nhận',
+                                        labelStyle: GoogleFonts.montserrat(
+                                          color: primaryTextColor,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 16,
+                                        ),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: primaryTextColor,
+                                          ),
+                                        ),
+                                        focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: primaryTextColor,
+                                          ),
+                                        ),
+                                      ),
+                                      style: GoogleFonts.montserrat(
+                                        color: primaryTextColor,
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 16,
+                                      ),
+                                      cursorColor: primaryTextColor,
+                                    ),
+                                    SizedBox(
+                                      height: 12,
+                                    ),
+                                    AuthButton(
+                                        btnLabel: 'Đặt ngay',
+                                        onPressed: () {
+                                          OrderServices.order(
+                                              int.parse(inputController.text),
+                                              CalcController.totalCalc(
+                                                  _.cartList),
+                                              _.cartList);
+                                        },
+                                        btnColor: Colors.green,
+                                        textColor: Colors.white)
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                   btnColor: secondaryBGColor,
                   textColor: Colors.white,
                 ),

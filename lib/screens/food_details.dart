@@ -174,24 +174,26 @@ class _FoodDetailsState extends State<FoodDetails> {
           onPressed: _counter != 0
               ? () {
                   CartServices.addToCart(widget.food.id, _counter);
-                  Get.dialog(AlertDialog(
-                    content: SizedBox(
-                      height: 140,
-                      child: Column(
-                        children: [
-                          Icon(
-                            Icons.check_circle,
-                            size: 100,
-                            color: Colors.green,
-                          ),
-                          SizedBox(
-                            height: 12,
-                          ),
-                          Text('Đã thêm vào giỏ hàng'),
-                        ],
+                  Get.dialog(
+                    AlertDialog(
+                      content: SizedBox(
+                        height: 140,
+                        child: Column(
+                          children: [
+                            Icon(
+                              Icons.check_circle,
+                              size: 100,
+                              color: Colors.green,
+                            ),
+                            SizedBox(
+                              height: 12,
+                            ),
+                            Text('Đã thêm vào giỏ hàng'),
+                          ],
+                        ),
                       ),
                     ),
-                  ));
+                  );
                 }
               : null,
           btnColor: secondaryBGColor,

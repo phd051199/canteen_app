@@ -1,4 +1,5 @@
 import 'package:food_order/controllers/auth/register.dart';
+import 'package:food_order/services/auth.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:food_order/widgets/login/button.dart';
 import 'package:food_order/widgets/login/textfield.dart';
@@ -58,12 +59,22 @@ class ForgotPasswordScreen extends StatelessWidget {
                         height: 16,
                         width: 16,
                         child: CircularProgressIndicator(
-                          color: Colors.white,
+                          color: secondaryBGColor,
                         ),
                       )
                     : null,
                 btnLabel: 'Submit',
-                onPressed: _.btnEnabled.value ? () => Get.back() : null,
+                onPressed: _.btnEnabled.value
+                    ? () {
+                        _.btnEnabled(false);
+                        _.isLoading(true);
+                        if (!_.isEmailInvalid.value) {
+                          AuthServices.forgot(
+                            emailInputController.text,
+                          );
+                        }
+                      }
+                    : null,
                 btnColor: secondaryBGColor,
                 textColor: _.btnEnabled.value ? Colors.white : Colors.grey,
               ),

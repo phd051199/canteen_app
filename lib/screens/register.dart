@@ -145,7 +145,7 @@ class RegisterScreen extends StatelessWidget {
                         }
                       : null,
                   btnColor: secondaryBGColor,
-                  textColor: _.btnEnabled.value ? Colors.black : Colors.grey,
+                  textColor: _.btnEnabled.value ? Colors.white : Colors.grey,
                 ),
               ],
             ),

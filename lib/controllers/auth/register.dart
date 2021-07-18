@@ -1,4 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:food_order/screens/login.dart';
 import 'package:food_order/screens/success.dart';
+import 'package:food_order/utils/constants.dart';
+import 'package:food_order/widgets/login/button.dart';
 import 'package:get/get.dart';
 
 class RegisterController extends GetxController {
@@ -13,7 +17,21 @@ class RegisterController extends GetxController {
   RxString emailInvalidMsg = ''.obs;
 
   void onRegSuccess() {
-    Get.offAll(() => SuccessScreen());
+    Get.offAll(
+      () => SuccessScreen(
+        title: 'Sign Up Successful 🎉',
+        content:
+            'Thanks for signing up. Welcome to our community. We are happy to have you on board.',
+        successBtn: AuthButton(
+          btnLabel: 'Back to Sign In',
+          onPressed: () {
+            Get.offAll(() => LoginScreen());
+          },
+          btnColor: secondaryBGColor,
+          textColor: Colors.white,
+        ),
+      ),
+    );
   }
 
   void onRegError(String msg) {

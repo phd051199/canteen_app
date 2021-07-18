@@ -1,11 +1,16 @@
-import 'package:food_order/screens/login.dart';
 import 'package:food_order/utils/constants.dart';
-import 'package:food_order/widgets/login/button.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SuccessScreen extends StatelessWidget {
+  const SuccessScreen({
+    Key? key,
+    required this.title,
+    required this.content,
+    this.successBtn,
+  }) : super(key: key);
+  final String title, content;
+  final successBtn;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +22,7 @@ class SuccessScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Sign Up Successful 🎉',
+                title,
                 style: GoogleFonts.montserrat(
                   color: primaryTextColor,
                   fontSize: 32,
@@ -28,7 +33,7 @@ class SuccessScreen extends StatelessWidget {
                 height: 12,
               ),
               Text(
-                'Thanks for signing up. Welcome to our community. We are happy to have you on board.',
+                content,
                 style: GoogleFonts.montserrat(
                   color: Colors.grey,
                   fontWeight: FontWeight.w300,
@@ -38,14 +43,7 @@ class SuccessScreen extends StatelessWidget {
               SizedBox(
                 height: 36,
               ),
-              AuthButton(
-                btnLabel: 'Back to Sign In',
-                onPressed: () {
-                  Get.offAll(() => LoginScreen());
-                },
-                btnColor: Colors.orangeAccent,
-                textColor: Colors.black,
-              ),
+              successBtn,
             ],
           ),
         ),
