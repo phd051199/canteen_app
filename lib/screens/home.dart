@@ -1,5 +1,5 @@
+import 'package:food_order/screens/cart.dart';
 import 'package:food_order/utils/constants.dart';
-import 'package:food_order/widgets/cart/cart.dart';
 import 'package:food_order/widgets/home/body.dart';
 import 'package:food_order/widgets/home/search.dart';
 import 'package:food_order/screens/profile.dart';
@@ -27,6 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
       return HomeBody();
     } else if (_selectedIndex == 1) {
       return CartPage();
+    } else if (_selectedIndex == 2) {
+      return Container();
     }
   }
 
@@ -42,7 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ? 'Xin chào 👋'
                 : _selectedIndex == 1
                     ? 'Giỏ hàng 🛒'
-                    : '',
+                    : _selectedIndex == 2
+                        ? 'Đơn hàng'
+                        : '',
             style: GoogleFonts.montserrat(
               color: primaryTextColor,
               fontWeight: FontWeight.w600,
@@ -102,9 +106,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              UniconsLine.search,
+              UniconsLine.list_ui_alt,
             ),
-            label: 'Tìm kiếm',
+            label: 'Đơn hàng',
           ),
         ],
       ),

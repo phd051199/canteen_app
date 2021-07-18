@@ -1,7 +1,6 @@
-import 'package:food_order/controllers/cart/cart.dart';
 import 'package:food_order/models/food.dart';
 import 'package:flutter/material.dart';
-import 'package:food_order/screens/home.dart';
+import 'package:food_order/services/cart.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:food_order/widgets/login/button.dart';
 import 'package:get/get.dart';
@@ -33,39 +32,25 @@ class _FoodDetailsState extends State<FoodDetails> {
 
   @override
   Widget build(BuildContext context) {
-    final CartController cartController = Get.put(CartController());
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: secondaryBGColor,
         ),
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 12),
-          child: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios_new,
-              color: secondaryBGColor,
-            ),
-            onPressed: () => Get.to(() => HomeScreen()),
+        centerTitle: false,
+        title: Text(
+          widget.food.name,
+          style: GoogleFonts.montserrat(
+            fontWeight: FontWeight.w600,
+            fontSize: 22,
+            color: primaryTextColor,
           ),
         ),
-        centerTitle: false,
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 4),
-              child: Text(
-                widget.food.name,
-                style: GoogleFonts.montserrat(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 22,
-                  color: primaryTextColor,
-                ),
-              ),
-            ),
             SizedBox(
               height: 20,
             ),
@@ -73,7 +58,7 @@ class _FoodDetailsState extends State<FoodDetails> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
-                  widget.food.image,
+                  '$apiURL/uploads/${widget.food.image}',
                   width: Get.width * 0.88,
                 ),
               ),
@@ -171,7 +156,7 @@ class _FoodDetailsState extends State<FoodDetails> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Text(
-                widget.food.detail,
+                widget.food.details,
                 style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w400,
                   fontSize: 16,
@@ -186,10 +171,29 @@ class _FoodDetailsState extends State<FoodDetails> {
         padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 32),
         child: AuthButton(
           btnLabel: 'Thêm vào giỏ hàng',
-          onPressed: () {
-            cartController.addOrder(widget.food, _counter);
-            print(cartController.orderList);
-          },
+          onPressed: _counter != 0
+              ? () {
+                  CartServices.addToCart(widget.food.id, _counter);
+                  Get.dialog(AlertDialog(
+                    content: SizedBox(
+                      height: 140,
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.check_circle,
+                            size: 100,
+                            color: Colors.green,
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Text('Đã thêm vào giỏ hàng'),
+                        ],
+                      ),
+                    ),
+                  ));
+                }
+              : null,
           btnColor: secondaryBGColor,
           textColor: Colors.white,
         ),

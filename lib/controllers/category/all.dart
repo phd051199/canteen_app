@@ -1,4 +1,4 @@
-import 'package:food_order/models/food.dart';
+import 'package:food_order/models/category.dart';
 import 'package:food_order/services/cat.dart';
 import 'package:get/get.dart';
 

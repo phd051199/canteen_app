@@ -6,6 +6,7 @@ import 'package:food_order/models/register.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthServices {
   static final client = http.Client();
@@ -20,7 +21,7 @@ class AuthServices {
     Function onError,
   ) async {
     final response = await client.post(
-      Uri.parse('$apiURL/register'),
+      Uri.parse('$apiURL/api/register'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -29,13 +30,13 @@ class AuthServices {
           "username": "$uname",
           "password": "$password",
           "email": "$email",
-          "fullName": "$fname"
+          "name": "$fname"
         },
       ),
     );
     final jsonString = registerFromJson(response.body);
     final res = jsonString;
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       onSuccess();
     } else {
       onError(res.message);
@@ -48,24 +49,16 @@ class AuthServices {
     Function onSuccess,
     Function onError,
   ) async {
-    final response = await client.post(Uri.parse('$apiURL/login'),
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final response = await client.post(Uri.parse('$apiURL/api/login'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
         },
-        body: jsonEncode({"username": "$username", "password": "$password"}));
+        body: jsonEncode({"user": "$username", "password": "$password"}));
     final jsonString = loginFromJson(response.body);
     final res = jsonString;
-    if (response.statusCode == 201) {
-      loginController.currentUser(
-        jsonDecode(
-          ascii.decode(
-            base64.decode(
-              base64.normalize(res.token!.split(".")[1]),
-            ),
-          ),
-        )['fname'],
-      );
-      loginController.jwt(res.token);
+    if (response.statusCode == 200) {
+      prefs.setString('token', res.token.toString());
       onSuccess();
     } else {
       onError(res.message);
