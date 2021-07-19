@@ -63,7 +63,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                         ),
                       )
                     : null,
-                btnLabel: 'Submit',
+                btnLabel: _.isLoading.value ? '' : 'Submit',
                 onPressed: _.btnEnabled.value
                     ? () {
                         _.btnEnabled(false);

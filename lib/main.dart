@@ -7,20 +7,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  String jwt = (await prefs.getString("token")) ?? '';
-  runApp(FoodApp(jwt));
+  String token = (await prefs.getString("token")) ?? '';
+  runApp(FoodApp(token));
 }
 
 class FoodApp extends StatelessWidget {
-  FoodApp(this.jwt);
-  final String jwt;
+  FoodApp(this.token);
+  final String token;
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: jwt == '' ? "login" : "/",
+      initialRoute: token == '' ? "login" : "/",
       routes: {
         '/': (context) => HomeScreen(),
         "login": (context) => LoginScreen(),
@@ -31,7 +30,6 @@ class FoodApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           elevation: 0,
           backgroundColor: primaryBGColor,
-          // brightness: Brightness.dark,
         ),
       ),
     );
