@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/screens/login.dart';
 import 'package:food_order/screens/success.dart';
-import 'package:food_order/utils/constants.dart';
 import 'package:food_order/widgets/login/button.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +26,7 @@ class RegisterController extends GetxController {
           onPressed: () {
             Get.offAll(() => LoginScreen());
           },
-          btnColor: secondaryBGColor,
+          btnColor: Colors.green,
           textColor: Colors.white,
         ),
       ),

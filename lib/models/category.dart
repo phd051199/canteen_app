@@ -13,21 +13,21 @@ String categoryToJson(List<Category> data) =>
 class Category {
   Category({
     required this.id,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.deletedAt,
+    this.createdAt,
+    this.updatedAt,
+    this.deletedAt,
     required this.name,
-    required this.details,
-    required this.image,
+    this.details,
+    this.image,
   });
 
   String id;
-  DateTime createdAt;
-  DateTime updatedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
   dynamic deletedAt;
   String name;
-  String details;
-  String image;
+  String? details;
+  String? image;
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
         id: json["id"],
@@ -41,8 +41,8 @@ class Category {
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "createdAt": createdAt.toIso8601String(),
-        "updatedAt": updatedAt.toIso8601String(),
+        "createdAt": createdAt?.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
         "deletedAt": deletedAt,
         "name": name,
         "details": details,

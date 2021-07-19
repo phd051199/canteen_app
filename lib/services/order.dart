@@ -41,7 +41,7 @@ class OrderServices {
             onPressed: () {
               Get.offAll(() => HomeScreen());
             },
-            btnColor: secondaryBGColor,
+            btnColor: Colors.green,
             textColor: Colors.white,
           ),
         ),

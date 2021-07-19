@@ -6,8 +6,9 @@ class MainTitle extends StatelessWidget {
   const MainTitle({
     required this.title,
     required this.rightText,
+    this.onTap,
   });
-
+  final onTap;
   final String title, rightText;
   @override
   Widget build(BuildContext context) {
@@ -22,12 +23,15 @@ class MainTitle extends StatelessWidget {
             color: primaryTextColor,
           ),
         ),
-        Text(
-          rightText,
-          style: GoogleFonts.montserrat(
-            fontSize: 16,
-            color: secondaryBGColor,
-            fontWeight: FontWeight.w400,
+        GestureDetector(
+          onTap: onTap,
+          child: Text(
+            rightText,
+            style: GoogleFonts.montserrat(
+              fontSize: 16,
+              color: secondaryBGColor,
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ),
       ],

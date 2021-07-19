@@ -69,6 +69,12 @@ class AuthServices {
     }
   }
 
+  static Future logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('token');
+    Get.offAll(() => LoginScreen());
+  }
+
   static Future forgot(String email) async {
     final response = await client.post(Uri.parse('$apiURL/api/password/send'),
         headers: {
@@ -85,7 +91,7 @@ class AuthServices {
             onPressed: () {
               Get.offAll(() => LoginScreen());
             },
-            btnColor: secondaryBGColor,
+            btnColor: Colors.green,
             textColor: Colors.white,
           ),
         ),
@@ -98,7 +104,7 @@ class AuthServices {
           successBtn: AuthButton(
             btnLabel: 'Back',
             onPressed: () {
-              Get.back();
+              Get.offAll(() => LoginScreen());
             },
             btnColor: secondaryBGColor,
             textColor: Colors.white,

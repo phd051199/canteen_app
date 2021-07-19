@@ -1,5 +1,7 @@
 import 'package:food_order/controllers/category/all.dart';
 import 'package:food_order/controllers/food/all.dart';
+import 'package:food_order/models/category.dart';
+import 'package:food_order/screens/view_list.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:food_order/widgets/cat/all.dart';
 import 'package:food_order/widgets/food/all.dart';
@@ -34,6 +36,14 @@ class HomeBody extends StatelessWidget {
             child: MainTitle(
               title: 'Món ăn mới',
               rightText: 'View all',
+              onTap: () => Get.to(
+                () => ViewList(
+                  cat: new Category(
+                    id: '',
+                    name: 'Tất cả món ăn mới',
+                  ),
+                ),
+              ),
             ),
           ),
           FoodsList(),
@@ -42,6 +52,14 @@ class HomeBody extends StatelessWidget {
             child: MainTitle(
               title: 'Món ăn phổ biến',
               rightText: 'View all',
+              onTap: () => Get.to(
+                () => ViewList(
+                  cat: new Category(
+                    id: '',
+                    name: 'Tất cả món ăn phổ biến',
+                  ),
+                ),
+              ),
             ),
           ),
           FoodsList(),

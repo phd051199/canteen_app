@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_order/services/auth.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -6,6 +7,7 @@ class ProfileAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      brightness: Brightness.dark,
       iconTheme: IconThemeData(
         color: Colors.white,
       ),
@@ -28,6 +30,22 @@ class ProfileAppBar extends StatelessWidget {
         ),
       ),
       centerTitle: false,
+      actions: [
+        Padding(
+          padding: const EdgeInsets.only(right: 24.0),
+          child: InkWell(
+            onTap: () => AuthServices.logout(),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(45),
+              ),
+              child: Icon(
+                Icons.exit_to_app,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

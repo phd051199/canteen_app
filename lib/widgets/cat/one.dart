@@ -27,11 +27,12 @@ class CategoryItem extends StatelessWidget {
                   color: Color(Random().nextInt(0xffffffff)).withOpacity(0.1),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(20),
                   child: Center(
                     child: Image.network(
                       '$apiURL/uploads/${cat.image}',
-                      height: 70,
+                      height: 50,
+                      width: 50,
                     ),
                   ),
                 ),
