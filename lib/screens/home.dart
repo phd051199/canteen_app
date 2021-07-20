@@ -1,4 +1,5 @@
 import 'package:food_order/screens/cart.dart';
+import 'package:food_order/screens/order.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:food_order/widgets/home/body.dart';
 import 'package:food_order/widgets/home/search.dart';
@@ -28,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
     } else if (_selectedIndex == 1) {
       return CartPage();
     } else if (_selectedIndex == 2) {
-      return Container();
+      return OrderList();
     }
   }
 

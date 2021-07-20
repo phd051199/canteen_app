@@ -5,6 +5,7 @@ import 'package:food_order/services/cart.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:unicons/unicons.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({
@@ -24,6 +25,14 @@ class CartItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.1),
+              spreadRadius: 5,
+              blurRadius: 10,
+              offset: Offset(0, 5),
+            ),
+          ],
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -88,9 +97,9 @@ class CartItem extends StatelessWidget {
                   cartController.fetchCart();
                 },
                 child: Icon(
-                  Icons.delete_sweep_outlined,
-                  color: Colors.red,
-                  size: 32,
+                  UniconsLine.trash_alt,
+                  color: secondaryBGColor,
+                  size: 28,
                 ),
               ),
               SizedBox(

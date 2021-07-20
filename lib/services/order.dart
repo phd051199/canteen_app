@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:food_order/controllers/auth/login.dart';
+import 'package:food_order/models/order_list.dart';
 import 'package:food_order/screens/home.dart';
 import 'package:food_order/screens/success.dart';
 import 'package:food_order/utils/constants.dart';
@@ -53,6 +54,23 @@ class OrderServices {
           content: 'This email is not exist',
         ),
       );
+    }
+  }
+
+  static Future<List<OrderListModel>> fetchOrderList() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final response = await client.get(
+      Uri.parse('$apiURL/api/orders'),
+      headers: {
+        'Authorization': '${prefs.getString('token')}',
+        'Content-type': 'application/json; charset=utf-8'
+      },
+    );
+    if (response.statusCode == 200) {
+      final jsonString = response.body;
+      return orderListFromJson(jsonString);
+    } else {
+      return [];
     }
   }
 }

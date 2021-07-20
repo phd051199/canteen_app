@@ -85,7 +85,8 @@ class _FoodDetailsState extends State<FoodDetails> {
                       onPressed: _counter > 0 ? _decrementCounter : null,
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
-                        primary: Color(0xffFFdee2),
+                        shadowColor: Colors.transparent,
+                        primary: Color(0xffB1EAFD).withOpacity(0.4),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -93,7 +94,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                       child: Text(
                         '-',
                         style: GoogleFonts.montserrat(
-                          color: _counter > 0 ? Colors.red : Colors.grey,
+                          color: _counter > 0 ? Color(0xff48B6DB) : Colors.grey,
                           fontWeight: FontWeight.w700,
                           fontSize: 24,
                         ),
@@ -121,7 +122,8 @@ class _FoodDetailsState extends State<FoodDetails> {
                       onPressed: _incrementCounter,
                       style: ElevatedButton.styleFrom(
                         elevation: 0,
-                        primary: Color(0xffFFdee2),
+                        shadowColor: Colors.transparent,
+                        primary: Color(0xffB1EAFD).withOpacity(0.4),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -129,7 +131,7 @@ class _FoodDetailsState extends State<FoodDetails> {
                       child: Text(
                         '+',
                         style: GoogleFonts.montserrat(
-                          color: Colors.red,
+                          color: Color(0xff48B6DB),
                           fontWeight: FontWeight.w700,
                           fontSize: 24,
                         ),
@@ -188,7 +190,14 @@ class _FoodDetailsState extends State<FoodDetails> {
                             SizedBox(
                               height: 12,
                             ),
-                            Text('Đã thêm vào giỏ hàng'),
+                            Text(
+                              'Đã thêm vào giỏ hàng',
+                              style: GoogleFonts.montserrat(
+                                color: primaryTextColor,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                              ),
+                            ),
                           ],
                         ),
                       ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/controllers/calc_total.dart';
 import 'package:food_order/controllers/cart/cart.dart';
-import 'package:food_order/services/cart.dart';
 import 'package:food_order/services/order.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:food_order/widgets/cart/cart.dart';
@@ -30,27 +29,30 @@ class CartPage extends StatelessWidget {
                     ),
                   )
                 : _.cartList.length != 0
-                    ? RefreshIndicator(
-                        color: secondaryBGColor,
-                        onRefresh: () async {
-                          await Future.delayed(Duration(milliseconds: 800));
-                          CartServices.fetchCart();
-                        },
-                        child: ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          itemCount: _.cartList.length,
-                          itemBuilder: (context, index) =>
-                              CartItem(cart: _.cartList[index]),
-                        ),
+                    ? ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: _.cartList.length,
+                        itemBuilder: (context, index) =>
+                            CartItem(cart: _.cartList[index]),
                       )
                     : Center(
-                        child: Text(
-                          'Giỏ hàng rỗng',
-                          style: GoogleFonts.montserrat(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 18,
-                            color: primaryTextColor,
-                          ),
+                        child: Column(
+                          children: [
+                            Image(
+                              image: AssetImage('assets/images/no-order.png'),
+                            ),
+                            SizedBox(
+                              height: 42,
+                            ),
+                            Text(
+                              'Giỏ hàng rỗng',
+                              style: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 18,
+                                color: primaryTextColor,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
           ),
