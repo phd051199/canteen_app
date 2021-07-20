@@ -25,7 +25,7 @@ class SuccessScreen extends StatelessWidget {
                 title,
                 style: GoogleFonts.montserrat(
                   color: primaryTextColor,
-                  fontSize: 32,
+                  fontSize: 26,
                   fontWeight: FontWeight.w600,
                 ),
               ),
