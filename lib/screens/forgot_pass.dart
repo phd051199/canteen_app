@@ -26,18 +26,18 @@ class ForgotPasswordScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Forgot Password?',
+                'Quên mật khẩu ?',
                 style: GoogleFonts.montserrat(
                   color: primaryTextColor,
-                  fontSize: 32,
+                  fontSize: 28,
                   fontWeight: FontWeight.w600,
                 ),
               ),
               SizedBox(
-                height: 7,
+                height: 12,
               ),
               Text(
-                'Enter the email address associated with your account.',
+                'Nhập địa chỉ email được liên kết với tài khoản của bạn.',
                 style: GoogleFonts.montserrat(
                   color: Colors.grey,
                   fontWeight: FontWeight.w300,
@@ -45,10 +45,10 @@ class ForgotPasswordScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 32),
+                padding: const EdgeInsets.symmetric(vertical: 28),
                 child: AuthInput(
                   inputController: emailInputController,
-                  label: 'Your Email',
+                  label: 'Nhập Email',
                   isInvalid: _.isEmailInvalid.value,
                   onChanged: (text) => _.inputEmailFGOnchanged(text),
                 ),
@@ -63,7 +63,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                         ),
                       )
                     : null,
-                btnLabel: _.isLoading.value ? '' : 'Submit',
+                btnLabel: _.isLoading.value ? '' : 'Gửi email khôi phục',
                 onPressed: _.btnEnabled.value
                     ? () {
                         _.btnEnabled(false);
@@ -82,7 +82,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 height: 24,
               ),
               AuthButton(
-                btnLabel: 'Sign in',
+                btnLabel: 'Trở về đăng nhập',
                 onPressed: () => Get.back(),
                 btnColor: Color(0xff444444),
                 textColor: Colors.white,

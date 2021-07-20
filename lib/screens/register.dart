@@ -31,7 +31,7 @@ class RegisterScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Sign Up',
+                  'Đăng ký',
                   style: GoogleFonts.montserrat(
                     color: primaryTextColor,
                     fontSize: 32,
@@ -44,7 +44,7 @@ class RegisterScreen extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'I have an account! ',
+                      'Đã có tài khoản ? ',
                       style: GoogleFonts.montserrat(
                         color: primaryTextColor,
                         fontWeight: FontWeight.w400,
@@ -54,7 +54,7 @@ class RegisterScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () => Get.back(),
                       child: Text(
-                        'Click here',
+                        'Đăng nhập',
                         style: GoogleFonts.montserrat(
                           color: secondaryBGColor,
                           fontWeight: FontWeight.w400,
@@ -85,7 +85,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 AuthInput(
                   inputController: emailInputController,
-                  label: 'Your Email',
+                  label: 'Email',
                   errorText:
                       _.isEmailInvalid.value && _.emailInvalidMsg.value != ''
                           ? _.emailInvalidMsg.value
@@ -129,7 +129,7 @@ class RegisterScreen extends StatelessWidget {
                           ),
                         )
                       : null,
-                  btnLabel: _.isLoading.value ? '' : 'Sign Up',
+                  btnLabel: _.isLoading.value ? '' : 'Đăng ký',
                   onPressed: _.btnEnabled.value
                       ? () {
                           _.btnEnabled(false);

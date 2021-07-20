@@ -111,6 +111,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             label: 'Đơn hàng',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              UniconsLine.chat,
+            ),
+            label: 'Chat',
+          ),
         ],
       ),
     );

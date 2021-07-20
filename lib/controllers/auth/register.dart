@@ -18,11 +18,11 @@ class RegisterController extends GetxController {
   void onRegSuccess() {
     Get.offAll(
       () => SuccessScreen(
-        title: 'Sign Up Successful 🎉',
+        title: 'Đăng ký thành công 🎉',
         content:
-            'Thanks for signing up. Welcome to our community. We are happy to have you on board.',
+            'Đăng ký tài khoản thành công, bây giờ bạn có thể sử dụng các tính năng của ứng dụng.',
         successBtn: AuthButton(
-          btnLabel: 'Back to Sign In',
+          btnLabel: 'Trở về đăng nhập',
           onPressed: () {
             Get.offAll(() => LoginScreen());
           },
@@ -35,12 +35,12 @@ class RegisterController extends GetxController {
 
   void onRegError(String msg) {
     btnDispose();
-    if (msg == 'User Already Exists') {
+    if (msg == 'User already exist') {
       isUserInvalid(true);
-      usernameInvalidMsg('User already exists');
+      usernameInvalidMsg('Tài khoản đã tồn tại');
     } else {
       isEmailInvalid(true);
-      emailInvalidMsg('Must be an email');
+      emailInvalidMsg('Địa chỉ email không hợp lệ');
     }
   }
 

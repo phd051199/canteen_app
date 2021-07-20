@@ -15,11 +15,11 @@ class LoginController extends GetxController {
     btnDispose();
     if (msg == 'Invalid Username') {
       isUserInvalid(true);
-      usernameInvalidMsg('Account does not exists');
+      usernameInvalidMsg('Tài khoản không tồn tại');
       pwdInvalidMsg('');
     } else if (msg == 'Invalid Password') {
       isPwdInvalid(true);
-      pwdInvalidMsg(msg);
+      pwdInvalidMsg('Sai mật khẩu');
     }
   }
 

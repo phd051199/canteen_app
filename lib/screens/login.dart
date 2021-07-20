@@ -27,7 +27,7 @@ class LoginScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Sign In',
+                  'Đăng nhập',
                   style: GoogleFonts.montserrat(
                     color: primaryTextColor,
                     fontSize: 32,
@@ -40,7 +40,7 @@ class LoginScreen extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'Don’t have an account ?',
+                      'Chưa có tài khoản ?',
                       style: GoogleFonts.montserrat(
                         color: primaryTextColor,
                         fontWeight: FontWeight.w400,
@@ -53,7 +53,7 @@ class LoginScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () => Get.to(() => RegisterScreen()),
                       child: Text(
-                        'Click here',
+                        'Đăng ký ngay',
                         style: GoogleFonts.montserrat(
                           color: secondaryBGColor,
                           fontWeight: FontWeight.w400,
@@ -67,7 +67,7 @@ class LoginScreen extends StatelessWidget {
                   height: 38,
                 ),
                 AuthInput(
-                  label: 'Your Email / Username',
+                  label: 'Tài khoản / Email',
                   inputController: usernameInputController,
                   isInvalid: _.isUserInvalid.value,
                   errorText:
@@ -77,7 +77,7 @@ class LoginScreen extends StatelessWidget {
                   onChanged: (text) => _.inputUsernameOnchanged(text),
                 ),
                 AuthInput(
-                  label: 'Password',
+                  label: 'Mật khẩu',
                   inputController: passwordInputController,
                   isInvalid: _.isPwdInvalid.value,
                   errorText: _.isPwdInvalid.value && _.pwdInvalidMsg.value != ''
@@ -96,7 +96,7 @@ class LoginScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () => Get.to(() => ForgotPasswordScreen()),
                       child: Text(
-                        'Forgot password ?',
+                        'Quên mật khẩu ?',
                         style: GoogleFonts.montserrat(
                           color: secondaryBGColor,
                           fontWeight: FontWeight.w400,
@@ -119,7 +119,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                         )
                       : null,
-                  btnLabel: _.isLoading.value ? '' : 'Sign In',
+                  btnLabel: _.isLoading.value ? '' : 'Đăng nhập',
                   onPressed: _.btnEnabled.value
                       ? () {
                           _.btnEnabled(false);
@@ -146,7 +146,7 @@ class LoginScreen extends StatelessWidget {
                   height: 32,
                 ),
                 AuthButton(
-                  btnLabel: 'Sign In/Up with Facebook',
+                  btnLabel: 'Đăng nhập với Facebook',
                   onPressed: () {},
                   btnColor: Colors.blueAccent,
                   textColor: Colors.white,
@@ -156,7 +156,7 @@ class LoginScreen extends StatelessWidget {
                   height: 11,
                 ),
                 AuthButton(
-                  btnLabel: 'Sign In/Up with Google',
+                  btnLabel: 'Đăng nhập với Google',
                   onPressed: () {},
                   btnColor: Colors.white,
                   textColor: Colors.black,
@@ -195,7 +195,7 @@ class RememberCheckbox extends StatelessWidget {
               width: 20,
               child: Checkbox(
                 activeColor: Colors.green,
-                checkColor: primaryTextColor,
+                checkColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -206,7 +206,7 @@ class RememberCheckbox extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 12,
+              width: 8,
             ),
             Text(
               'Remember me',

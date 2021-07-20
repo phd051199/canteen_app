@@ -84,10 +84,10 @@ class AuthServices {
     if (response.statusCode == 200) {
       Get.offAll(
         () => SuccessScreen(
-          title: 'Send link success 🎉',
-          content: 'Check your email to reset password',
+          title: 'Đã gửi email khôi phục 🎉',
+          content: 'Vui lòng kiểm tra email để đặt lại mật khẩu cho tài khoản.',
           successBtn: AuthButton(
-            btnLabel: 'Back to Sign In',
+            btnLabel: 'Trở về đăng nhập',
             onPressed: () {
               Get.offAll(() => LoginScreen());
             },
@@ -99,10 +99,10 @@ class AuthServices {
     } else {
       Get.offAll(
         () => SuccessScreen(
-          title: 'Something went wrong',
-          content: 'This email is not exist',
+          title: 'Lỗi',
+          content: 'Email không tồn tại hoặc chưa được liên kết.',
           successBtn: AuthButton(
-            btnLabel: 'Back',
+            btnLabel: 'Trở về',
             onPressed: () {
               Get.offAll(() => LoginScreen());
             },
