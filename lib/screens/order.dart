@@ -51,7 +51,7 @@ class OrderListItem extends StatelessWidget {
           AlertDialog(
             content: SizedBox(
               width: Get.width,
-              height: Get.height * 0.3,
+              height: Get.height * 0.35,
               child: Column(
                 children: [
                   SizedBox(
@@ -61,15 +61,93 @@ class OrderListItem extends StatelessWidget {
                     'Thông tin chi tiết đơn hàng',
                     style: GoogleFonts.montserrat(
                       color: primaryTextColor,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
                       fontSize: 18,
                     ),
                   ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        'Bánh mì ',
+                        style: GoogleFonts.montserrat(
+                          color: primaryTextColor,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(
+                        'x2',
+                        style: GoogleFonts.montserrat(
+                          color: primaryTextColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        'Coca Cola ',
+                        style: GoogleFonts.montserrat(
+                          color: primaryTextColor,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(
+                        'x1',
+                        style: GoogleFonts.montserrat(
+                          color: primaryTextColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
                   Spacer(),
+                  Row(
+                    children: [
+                      Text(
+                        'Tổng đơn: ',
+                        style: GoogleFonts.montserrat(
+                          color: primaryTextColor,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(
+                        '34000 VNĐ',
+                        style: GoogleFonts.montserrat(
+                          color: primaryTextColor,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
                   AuthButton(
                     btnLabel: 'Thanh toán ngay',
                     onPressed: _launchURL,
                     btnColor: Colors.green,
+                    textColor: Colors.white,
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  AuthButton(
+                    btnLabel: 'Huỷ đơn hàng',
+                    onPressed: () {},
+                    btnColor: secondaryBGColor,
                     textColor: Colors.white,
                   ),
                 ],

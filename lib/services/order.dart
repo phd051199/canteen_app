@@ -35,7 +35,7 @@ class OrderServices {
     if (response.statusCode == 200) {
       Get.offAll(
         () => SuccessScreen(
-          title: 'Đặt hàng thành công',
+          title: 'Đặt hàng thành công 🎉',
           content: 'Đơn hàng của bạn đang được xử lý, vui lòng chờ',
           successBtn: AuthButton(
             btnLabel: 'Trở về trang chủ',
