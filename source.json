@@ -1,5 +1,6 @@
 {
 "name": "Pham Duy",
+"identifier": "com.phamduy.source",
 "apps": [
 {
 "name": "Food Ordering app",
