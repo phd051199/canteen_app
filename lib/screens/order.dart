@@ -45,7 +45,7 @@ class OrderListItem extends StatelessWidget {
     void _launchURL() async => await canLaunch(_url)
         ? await launch(_url)
         : throw 'Could not launch $_url';
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         Get.dialog(
           AlertDialog(

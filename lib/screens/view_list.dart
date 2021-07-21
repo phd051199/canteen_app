@@ -37,24 +37,32 @@ class ViewList extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 26),
         height: Get.height,
         child: Obx(
-          () {
-            if (controller.isLoading.value)
-              return Center(
-                child: CircularProgressIndicator(
-                  color: secondaryBGColor,
-                ),
-              );
-            else
-              return StaggeredGridView.countBuilder(
-                crossAxisCount: 2,
-                itemCount: controller.foodList.length,
-                crossAxisSpacing: 12,
-                mainAxisSpacing: 12,
-                itemBuilder: (context, index) =>
-                    FoodTitle(controller.foodList[index]),
-                staggeredTileBuilder: (index) => StaggeredTile.fit(1),
-              );
-          },
+          () => controller.isLoading.value
+              ? Center(
+                  child: CircularProgressIndicator(
+                    color: secondaryBGColor,
+                  ),
+                )
+              : controller.foodList.length == 0
+                  ? Center(
+                      child: Text(
+                        'Không tìm thấy món nào',
+                        style: GoogleFonts.montserrat(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18,
+                          color: primaryTextColor,
+                        ),
+                      ),
+                    )
+                  : StaggeredGridView.countBuilder(
+                      crossAxisCount: 2,
+                      itemCount: controller.foodList.length,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12,
+                      itemBuilder: (context, index) =>
+                          FoodTitle(controller.foodList[index]),
+                      staggeredTileBuilder: (index) => StaggeredTile.fit(1),
+                    ),
         ),
       ),
     );
@@ -67,7 +75,7 @@ class FoodTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () => Get.to(() => FoodDetails(
             food: food,
           )),

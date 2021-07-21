@@ -91,7 +91,7 @@ class CartItem extends StatelessWidget {
                 ],
               ),
               Spacer(),
-              InkWell(
+              GestureDetector(
                 onTap: () async {
                   CartServices.removeFromCart(cart.id);
                   cartController.fetchCart();

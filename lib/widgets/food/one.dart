@@ -19,7 +19,7 @@ class FoodCard extends StatelessWidget {
       padding: const EdgeInsets.only(left: 12),
       child: Material(
         type: MaterialType.transparency,
-        child: InkWell(
+        child: GestureDetector(
           onTap: () => Get.to(() => FoodDetails(food: food)),
           child: Container(
             width: 261,

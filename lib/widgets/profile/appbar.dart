@@ -33,7 +33,7 @@ class ProfileAppBar extends StatelessWidget {
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 24.0),
-          child: InkWell(
+          child: GestureDetector(
             onTap: () => AuthServices.logout(),
             child: DecoratedBox(
               decoration: BoxDecoration(
