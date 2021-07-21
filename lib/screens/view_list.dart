@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:food_order/controllers/food/bycat.dart';
 import 'package:food_order/models/category.dart';
 import 'package:food_order/models/food.dart';
 import 'package:food_order/screens/food_details.dart';
@@ -9,13 +8,16 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ViewList extends StatelessWidget {
-  const ViewList({Key? key, required this.cat}) : super(key: key);
-  final Category cat;
+  const ViewList({
+    Key? key,
+    this.cat,
+    this.controller,
+  }) : super(key: key);
+  final Category? cat;
+  final controller;
 
   @override
   Widget build(BuildContext context) {
-    final FoodByCatController foodByCatController =
-        Get.put(FoodByCatController(cat: '${cat.id}'));
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -23,7 +25,7 @@ class ViewList extends StatelessWidget {
         ),
         centerTitle: false,
         title: Text(
-          cat.name,
+          cat != null ? cat!.name : 'Kết quả tìm kiếm',
           style: GoogleFonts.montserrat(
             fontWeight: FontWeight.w600,
             fontSize: 22,
@@ -31,17 +33,12 @@ class ViewList extends StatelessWidget {
           ),
         ),
       ),
-      body: RefreshIndicator(
-        color: secondaryBGColor,
-        onRefresh: () async {
-          await Future.delayed(Duration(milliseconds: 800));
-          foodByCatController.fetchFoods(cat.id);
-        },
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 26),
-          height: Get.height,
-          child: Obx(() {
-            if (foodByCatController.isLoading.value)
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 26),
+        height: Get.height,
+        child: Obx(
+          () {
+            if (controller.isLoading.value)
               return Center(
                 child: CircularProgressIndicator(
                   color: secondaryBGColor,
@@ -50,14 +47,14 @@ class ViewList extends StatelessWidget {
             else
               return StaggeredGridView.countBuilder(
                 crossAxisCount: 2,
-                itemCount: foodByCatController.foodList.length,
+                itemCount: controller.foodList.length,
                 crossAxisSpacing: 12,
                 mainAxisSpacing: 12,
                 itemBuilder: (context, index) =>
-                    FoodTitle(foodByCatController.foodList[index]),
+                    FoodTitle(controller.foodList[index]),
                 staggeredTileBuilder: (index) => StaggeredTile.fit(1),
               );
-          }),
+          },
         ),
       ),
     );

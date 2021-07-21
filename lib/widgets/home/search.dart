@@ -3,6 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SearchBar extends StatelessWidget {
+  SearchBar({
+    this.inputController,
+    this.submit,
+  });
+  final TextEditingController? inputController;
+  final Function(String)? submit;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,6 +32,9 @@ class SearchBar extends StatelessWidget {
             ),
             Expanded(
               child: TextField(
+                textInputAction: TextInputAction.search,
+                onSubmitted: submit,
+                controller: inputController,
                 decoration: InputDecoration(
                   hintText: 'Tìm kiếm món ăn',
                   hintStyle: GoogleFonts.montserrat(

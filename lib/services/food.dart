@@ -30,7 +30,24 @@ class FoodServices {
   static Future<List<Food>> fetchFoodsByCat(String catId) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final response = await client.get(
-      Uri.parse('$apiURL/api/foods?cat_id=$catId'),
+      Uri.parse('$apiURL/api/foods?catid=$catId'),
+      headers: {
+        'Authorization': '${prefs.getString('token')}',
+        'Content-type': 'application/json; charset=utf-8'
+      },
+    );
+    if (response.statusCode == 200) {
+      final jsonString = response.body;
+      return foodFromJson(jsonString);
+    } else {
+      return [];
+    }
+  }
+
+  static Future<List<Food>> searchFoods(String foodName) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final response = await client.get(
+      Uri.parse('$apiURL/api/foods?foodname=$foodName'),
       headers: {
         'Authorization': '${prefs.getString('token')}',
         'Content-type': 'application/json; charset=utf-8'

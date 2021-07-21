@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:food_order/controllers/food/bycat.dart';
 import 'package:food_order/models/category.dart';
 import 'package:food_order/screens/view_list.dart';
 import 'package:food_order/utils/constants.dart';
@@ -15,7 +16,12 @@ class CategoryItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: InkWell(
-        onTap: () => Get.to(() => ViewList(cat: cat)),
+        onTap: () => Get.to(
+          () => ViewList(
+            cat: cat,
+            controller: Get.put(FoodByCatController(cat: '${cat.id}')),
+          ),
+        ),
         child: SizedBox(
           height: 140,
           width: 95,

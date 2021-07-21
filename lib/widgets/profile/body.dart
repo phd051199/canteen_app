@@ -1,7 +1,10 @@
+import 'package:food_order/models/category.dart';
+import 'package:food_order/screens/view_list.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:food_order/widgets/food/all.dart';
 import 'package:food_order/widgets/home/title.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileBody extends StatelessWidget {
@@ -59,6 +62,14 @@ class ProfileBody extends StatelessWidget {
               child: MainTitle(
                 title: 'Món ăn gần đây',
                 rightText: 'View all',
+                onTap: () => Get.to(
+                  () => ViewList(
+                    cat: new Category(
+                      id: '',
+                      name: 'Tất cả món ăn gần đây',
+                    ),
+                  ),
+                ),
               ),
             ),
             FoodsList(),

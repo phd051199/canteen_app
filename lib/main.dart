@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  String token = (await prefs.getString("token")) ?? '';
+  String token = (await prefs.getString('token')) ?? '';
   runApp(FoodApp(token));
 }
 
@@ -19,10 +19,10 @@ class FoodApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: token == '' ? "login" : "/",
+      initialRoute: token == '' ? 'login' : '/',
       routes: {
         '/': (context) => HomeScreen(),
-        "login": (context) => LoginScreen(),
+        'login': (context) => LoginScreen(),
       },
       theme: ThemeData(
         unselectedWidgetColor: primaryTextColor,

@@ -1,5 +1,7 @@
+import 'package:food_order/controllers/food/byname.dart';
 import 'package:food_order/screens/cart.dart';
 import 'package:food_order/screens/order.dart';
+import 'package:food_order/screens/view_list.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:food_order/widgets/home/body.dart';
 import 'package:food_order/widgets/home/search.dart';
@@ -16,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-
+  TextEditingController searchBarInputController = TextEditingController();
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -59,7 +61,17 @@ class _HomeScreenState extends State<HomeScreen> {
         bottom: _selectedIndex == 0
             ? PreferredSize(
                 preferredSize: Size.fromHeight(70),
-                child: SearchBar(),
+                child: SearchBar(
+                  inputController: searchBarInputController,
+                  submit: (context) {
+                    Get.to(
+                      () => ViewList(
+                        controller:
+                            Get.put(FoodByNameController(foodName: context)),
+                      ),
+                    );
+                  },
+                ),
               )
             : null,
         actions: [
