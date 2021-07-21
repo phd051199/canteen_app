@@ -1,5 +1,6 @@
 import 'package:food_order/controllers/category/all.dart';
 import 'package:food_order/controllers/food/all.dart';
+import 'package:food_order/controllers/food/bycat.dart';
 import 'package:food_order/models/category.dart';
 import 'package:food_order/screens/view_list.dart';
 import 'package:food_order/utils/constants.dart';
@@ -42,6 +43,7 @@ class HomeBody extends StatelessWidget {
                     id: '',
                     name: 'Tất cả món ăn mới',
                   ),
+                  controller: Get.put(FoodByCatController(cat: '')),
                 ),
               ),
             ),
@@ -58,6 +60,7 @@ class HomeBody extends StatelessWidget {
                     id: '',
                     name: 'Tất cả món ăn phổ biến',
                   ),
+                  controller: Get.put(FoodByCatController(cat: '')),
                 ),
               ),
             ),

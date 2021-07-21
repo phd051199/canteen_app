@@ -1,3 +1,4 @@
+import 'package:food_order/controllers/food/bycat.dart';
 import 'package:food_order/models/category.dart';
 import 'package:food_order/screens/view_list.dart';
 import 'package:food_order/utils/constants.dart';
@@ -68,6 +69,7 @@ class ProfileBody extends StatelessWidget {
                       id: '',
                       name: 'Tất cả món ăn gần đây',
                     ),
+                    controller: Get.put(FoodByCatController(cat: '')),
                   ),
                 ),
               ),

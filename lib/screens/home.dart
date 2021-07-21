@@ -66,8 +66,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   submit: (context) {
                     Get.to(
                       () => ViewList(
-                        controller:
-                            Get.put(FoodByNameController(foodName: context)),
+                        controller: Get.put(
+                          FoodByNameController(foodName: context),
+                        ),
                       ),
                     );
                   },
