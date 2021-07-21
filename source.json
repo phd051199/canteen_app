@@ -1,20 +1,25 @@
 {
-"name": "Channels",
-"identifier": "com.afsimsir.source",
+"name": "Pham Duy",
 "apps": [
 {
-"name": "Food app",
+"name": "Food Ordering app",
 "bundleIdentifier": "com.das.dsaud2k",
 "developerName": "@phamduy",
-"subtitle": "Cantin Foods Ordering App",
-"version": "1.0.1",
-"versionDate": "2021-03-24T00:00:00-00:00",
-"versionDescription": "• First ver",
+"subtitle": "Canteen Foods Ordering App",
+"version": "1.0.0",
+"versionDate": "2021-07-21T00:00:00-00:00",
+"versionDescription": "• First version",
 "downloadURL": "https://github.com/phd91105/cantin_app/releases/download/cantin_app_2021-07-21_11-07-24/cantin_app.ipa",
 "localizedDescription": "",
-"iconURL": "https://cdn.iconscout.com/icon/free/png-512/flutter-2038877-1720090.png",
+"iconURL": "https://cdn.iconscout.com/icon/free/png-512/flutter-2752187-2285004.png",
 "tintColor": "0093E9",
 "size": 22000000,
+ "screenshotURLs": [
+"https://github.com/phd91105/cantin_app/raw/gh-pages/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202021-07-19%20at%2013.03.27.png",
+"https://github.com/phd91105/cantin_app/raw/gh-pages/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202021-07-19%20at%2013.03.38.png",
+"https://github.com/phd91105/cantin_app/raw/gh-pages/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202021-07-19%20at%2013.03.59.png",
+"https://github.com/phd91105/cantin_app/raw/gh-pages/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202021-07-19%20at%2013.04.18.png"
+]
 }
 ],
 "userInfo": {}
