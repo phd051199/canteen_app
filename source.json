@@ -1,0 +1,21 @@
+{
+"name": "Channels",
+"identifier": "com.afsimsir.source",
+"apps": [
+{
+"name": "Food app",
+"bundleIdentifier": "com.das.dsaud2k",
+"developerName": "@phamduy",
+"subtitle": "Cantin Foods Ordering App",
+"version": "1.0.1",
+"versionDate": "2021-03-24T00:00:00-00:00",
+"versionDescription": "• First ver",
+"downloadURL": "https://github.com/phd91105/cantin_app/releases/download/cantin_app_2021-07-21_11-07-24/cantin_app.ipa",
+"localizedDescription": "",
+"iconURL": "https://cdn.iconscout.com/icon/free/png-512/flutter-2038877-1720090.png",
+"tintColor": "0093E9",
+"size": 22000000,
+}
+],
+"userInfo": {}
+}
