@@ -202,6 +202,24 @@ class _FoodDetailsState extends State<FoodDetails> {
                                 ),
                               ),
                             ),
+                            // Container(
+                            //   child: SingleChildScrollView(
+                            //     child: Column(
+                            //       mainAxisAlignment: MainAxisAlignment.start,
+                            //       crossAxisAlignment: CrossAxisAlignment.start,
+                            //       children: [
+                            //         Comment(),
+                            //         Comment(),
+                            //         Comment(),
+                            //         Comment(),
+                            //         Comment(),
+                            //         Comment(),
+                            //         Comment(),
+                            //         Comment(),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
                             InAppWebView(
                               initialUrlRequest: URLRequest(
                                 url: Uri.parse(
