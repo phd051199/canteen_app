@@ -1,3 +1,4 @@
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:food_order/models/food.dart';
 import 'package:flutter/material.dart';
 import 'package:food_order/services/cart.dart';
@@ -186,39 +187,34 @@ class _FoodDetailsState extends State<FoodDetails> {
                     ),
                     Expanded(
                       child: Container(
-                        child: TabBarView(children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 18),
-                            child: Text(
-                              widget.food.details,
-                              textAlign: TextAlign.justify,
-                              style: GoogleFonts.montserrat(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 16,
-                                color: primaryTextColor,
-                                height: 1.7,
+                        child: TabBarView(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 18),
+                              child: Text(
+                                widget.food.details,
+                                textAlign: TextAlign.justify,
+                                style: GoogleFonts.montserrat(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 16,
+                                  color: primaryTextColor,
+                                  height: 1.7,
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                            child: SingleChildScrollView(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Comment(),
-                                  Comment(),
-                                  Comment(),
-                                  Comment(),
-                                  Comment(),
-                                  Comment(),
-                                  Comment(),
-                                  Comment(),
-                                ],
+                            InAppWebView(
+                              initialUrlRequest: URLRequest(
+                                url: Uri.parse(
+                                    '$apiURL/comment/${widget.food.id}'),
+                              ),
+                              initialOptions: InAppWebViewGroupOptions(
+                                crossPlatform: InAppWebViewOptions(
+                                  supportZoom: false,
+                                ),
                               ),
                             ),
-                          ),
-                        ]),
+                          ],
+                        ),
                       ),
                     )
                   ],

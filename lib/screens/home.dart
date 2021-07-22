@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ? 'Giỏ hàng 🛒'
                     : _selectedIndex == 2
                         ? 'Đơn hàng'
-                        : 'Chat',
+                        : 'Hỗ trợ',
             style: GoogleFonts.montserrat(
               color: primaryTextColor,
               fontWeight: FontWeight.w600,
@@ -141,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(
               UniconsLine.chat,
             ),
-            label: 'Chat',
+            label: 'Hỗ trợ',
           ),
         ],
       ),
