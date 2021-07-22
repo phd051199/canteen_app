@@ -1,3 +1,4 @@
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:food_order/controllers/food/byname.dart';
 import 'package:food_order/screens/cart.dart';
 import 'package:food_order/screens/order.dart';
@@ -25,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  final _url = 'https://phamduy.me/chat';
   getBody() {
     if (_selectedIndex == 0) {
       return HomeBody();
@@ -32,6 +34,17 @@ class _HomeScreenState extends State<HomeScreen> {
       return CartPage();
     } else if (_selectedIndex == 2) {
       return OrderList();
+    } else if (_selectedIndex == 3) {
+      return InAppWebView(
+        initialUrlRequest: URLRequest(
+          url: Uri.parse(_url),
+        ),
+        initialOptions: InAppWebViewGroupOptions(
+          crossPlatform: InAppWebViewOptions(
+            supportZoom: false,
+          ),
+        ),
+      );
     }
   }
 
@@ -49,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ? 'Giỏ hàng 🛒'
                     : _selectedIndex == 2
                         ? 'Đơn hàng'
-                        : '',
+                        : 'Chat',
             style: GoogleFonts.montserrat(
               color: primaryTextColor,
               fontWeight: FontWeight.w600,
