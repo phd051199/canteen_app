@@ -1,4 +1,3 @@
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:food_order/models/food.dart';
 import 'package:flutter/material.dart';
 import 'package:food_order/services/cart.dart';
@@ -202,35 +201,35 @@ class _FoodDetailsState extends State<FoodDetails> {
                                 ),
                               ),
                             ),
-                            // Container(
-                            //   child: SingleChildScrollView(
-                            //     child: Column(
-                            //       mainAxisAlignment: MainAxisAlignment.start,
-                            //       crossAxisAlignment: CrossAxisAlignment.start,
-                            //       children: [
-                            //         Comment(),
-                            //         Comment(),
-                            //         Comment(),
-                            //         Comment(),
-                            //         Comment(),
-                            //         Comment(),
-                            //         Comment(),
-                            //         Comment(),
-                            //       ],
-                            //     ),
-                            //   ),
-                            // ),
-                            InAppWebView(
-                              initialUrlRequest: URLRequest(
-                                url: Uri.parse(
-                                    '$apiURL/comment/${widget.food.id}'),
-                              ),
-                              initialOptions: InAppWebViewGroupOptions(
-                                crossPlatform: InAppWebViewOptions(
-                                  supportZoom: false,
+                            Container(
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Comment(),
+                                    Comment(),
+                                    Comment(),
+                                    Comment(),
+                                    Comment(),
+                                    Comment(),
+                                    Comment(),
+                                    Comment(),
+                                  ],
                                 ),
                               ),
                             ),
+                            // InAppWebView(
+                            //   initialUrlRequest: URLRequest(
+                            //     url: Uri.parse(
+                            //         '$apiURL/comment/${widget.food.id}'),
+                            //   ),
+                            //   initialOptions: InAppWebViewGroupOptions(
+                            //     crossPlatform: InAppWebViewOptions(
+                            //       supportZoom: false,
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
