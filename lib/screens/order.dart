@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:food_order/controllers/order/all.dart';
 import 'package:food_order/models/order_list.dart';
 import 'package:food_order/utils/constants.dart';
@@ -135,8 +135,7 @@ class OrderListItem extends StatelessWidget {
                   AuthButton(
                     btnLabel: 'Thanh toán ngay',
                     onPressed: () => Get.to(
-                      () => new WebviewScaffold(
-                        url: _url,
+                      () => Scaffold(
                         appBar: AppBar(
                           iconTheme: IconThemeData(
                             color: secondaryBGColor,
@@ -148,6 +147,16 @@ class OrderListItem extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               fontSize: 18,
                               color: primaryTextColor,
+                            ),
+                          ),
+                        ),
+                        body: InAppWebView(
+                          initialUrlRequest: URLRequest(
+                            url: Uri.parse(_url),
+                          ),
+                          initialOptions: InAppWebViewGroupOptions(
+                            crossPlatform: InAppWebViewOptions(
+                              supportZoom: false,
                             ),
                           ),
                         ),

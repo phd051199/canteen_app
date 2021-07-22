@@ -32,7 +32,7 @@ dependencies:
   unicons: ^2.0.1
   flutter_staggered_grid_view: ^0.4.0
   shared_preferences: ^2.0.6
-  flutter_webview_plugin: ^0.4.0
+  flutter_inappwebview: ^5.3.2
 
 dev_dependencies:
   flutter_test:
