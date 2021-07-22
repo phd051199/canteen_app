@@ -89,6 +89,7 @@ class CartPage extends StatelessWidget {
                                       height: 12,
                                     ),
                                     TextField(
+                                      keyboardType: TextInputType.number,
                                       controller: inputController,
                                       decoration: InputDecoration(
                                         labelText: 'Bàn nhận',

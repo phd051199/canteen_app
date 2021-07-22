@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:food_order/controllers/order/all.dart';
 import 'package:food_order/models/order_list.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:food_order/widgets/login/button.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class OrderList extends StatelessWidget {
   const OrderList({Key? key}) : super(key: key);
@@ -42,9 +42,6 @@ class OrderListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _url = '$apiURL/api/vnp/checkout/${order.id}';
-    void _launchURL() async => await canLaunch(_url)
-        ? await launch(_url)
-        : throw 'Could not launch $_url';
     return GestureDetector(
       onTap: () {
         Get.dialog(
@@ -137,7 +134,25 @@ class OrderListItem extends StatelessWidget {
                   ),
                   AuthButton(
                     btnLabel: 'Thanh toán ngay',
-                    onPressed: _launchURL,
+                    onPressed: () => Get.to(
+                      () => new WebviewScaffold(
+                        url: _url,
+                        appBar: AppBar(
+                          iconTheme: IconThemeData(
+                            color: secondaryBGColor,
+                          ),
+                          centerTitle: false,
+                          title: Text(
+                            'Thanh toán đơn hàng',
+                            style: GoogleFonts.montserrat(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: primaryTextColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                     btnColor: Colors.green,
                     textColor: Colors.white,
                   ),
