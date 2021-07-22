@@ -219,17 +219,6 @@ class _FoodDetailsState extends State<FoodDetails> {
                                 ),
                               ),
                             ),
-                            // InAppWebView(
-                            //   initialUrlRequest: URLRequest(
-                            //     url: Uri.parse(
-                            //         '$apiURL/comment/${widget.food.id}'),
-                            //   ),
-                            //   initialOptions: InAppWebViewGroupOptions(
-                            //     crossPlatform: InAppWebViewOptions(
-                            //       supportZoom: false,
-                            //     ),
-                            //   ),
-                            // ),
                           ],
                         ),
                       ),
