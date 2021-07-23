@@ -26,18 +26,17 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  final _url = 'https://phamduy.me/chat';
   getBody() {
     if (_selectedIndex == 0) {
       return HomeBody();
-    } else if (_selectedIndex == 1) {
-      return CartPage();
     } else if (_selectedIndex == 2) {
-      return OrderList();
+      return CartPage();
     } else if (_selectedIndex == 3) {
+      return OrderList();
+    } else if (_selectedIndex == 4) {
       return InAppWebView(
         initialUrlRequest: URLRequest(
-          url: Uri.parse(_url),
+          url: Uri.parse('$apiURL/chat'),
         ),
         initialOptions: InAppWebViewGroupOptions(
           crossPlatform: InAppWebViewOptions(
@@ -59,10 +58,12 @@ class _HomeScreenState extends State<HomeScreen> {
             _selectedIndex == 0
                 ? 'Xin chào 👋'
                 : _selectedIndex == 1
-                    ? 'Giỏ hàng 🛒'
+                    ? 'Yêu thích ❤️'
                     : _selectedIndex == 2
-                        ? 'Đơn hàng'
-                        : 'Hỗ trợ',
+                        ? 'Giỏ hàng 🛒'
+                        : _selectedIndex == 3
+                            ? 'Đơn hàng 📃'
+                            : 'Hỗ trợ 👨‍🏭',
             style: GoogleFonts.montserrat(
               color: primaryTextColor,
               fontWeight: FontWeight.w600,
@@ -124,6 +125,12 @@ class _HomeScreenState extends State<HomeScreen> {
               UniconsLine.estate,
             ),
             label: 'Trang chủ',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              UniconsLine.heart,
+            ),
+            label: 'Yêu thích',
           ),
           BottomNavigationBarItem(
             icon: Icon(

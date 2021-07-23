@@ -1,5 +1,7 @@
+import 'package:food_order/controllers/food/rating.dart';
 import 'package:food_order/models/food.dart';
 import 'package:flutter/material.dart';
+import 'package:food_order/models/rating.dart';
 import 'package:food_order/services/cart.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:food_order/widgets/login/button.dart';
@@ -201,23 +203,41 @@ class _FoodDetailsState extends State<FoodDetails> {
                                 ),
                               ),
                             ),
-                            Container(
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Comment(),
-                                    Comment(),
-                                    Comment(),
-                                    Comment(),
-                                    Comment(),
-                                    Comment(),
-                                    Comment(),
-                                    Comment(),
-                                  ],
-                                ),
-                              ),
+                            // Container(
+                            //   child: SingleChildScrollView(
+                            //     child: Column(
+                            //       mainAxisAlignment: MainAxisAlignment.start,
+                            //       crossAxisAlignment: CrossAxisAlignment.start,
+                            //       children: [
+                            //         Comment(),
+                            //         Comment(),
+                            //         Comment(),
+                            //         Comment(),
+                            //         Comment(),
+                            //         Comment(),
+                            //         Comment(),
+                            //         Comment(),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+                            GetX<FoodRatingtController>(
+                              init: FoodRatingtController(
+                                  id: '${widget.food.id}'),
+                              builder: (_) => _.isLoading.value
+                                  ? Center(
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                                secondaryBGColor),
+                                      ),
+                                    )
+                                  : ListView.builder(
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: _.rateList.length,
+                                      itemBuilder: (context, index) =>
+                                          Comment(rate: _.rateList[index]),
+                                    ),
                             ),
                           ],
                         ),
@@ -277,8 +297,9 @@ class _FoodDetailsState extends State<FoodDetails> {
 class Comment extends StatelessWidget {
   const Comment({
     Key? key,
+    required this.rate,
   }) : super(key: key);
-
+  final RatingModel rate;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -291,7 +312,7 @@ class Comment extends StatelessWidget {
               height: 16,
             ),
             Text(
-              'Pham Duy',
+              rate.userName,
               textAlign: TextAlign.justify,
               style: GoogleFonts.montserrat(
                 fontWeight: FontWeight.w600,
@@ -303,7 +324,7 @@ class Comment extends StatelessWidget {
             Container(
               width: 260,
               child: Text(
-                'test test test test test test test test test test test test test test',
+                rate.comment,
                 textAlign: TextAlign.justify,
                 style: GoogleFonts.montserrat(
                   fontWeight: FontWeight.w400,
@@ -316,7 +337,7 @@ class Comment extends StatelessWidget {
           ],
         ),
         Text(
-          '⭐️⭐️⭐️⭐️⭐️',
+          '${rate.rating} ⭐️',
           textAlign: TextAlign.justify,
           style: GoogleFonts.montserrat(
             fontWeight: FontWeight.w600,

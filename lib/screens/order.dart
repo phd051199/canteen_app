@@ -132,48 +132,52 @@ class OrderListItem extends StatelessWidget {
                   SizedBox(
                     height: 16,
                   ),
-                  AuthButton(
-                    btnLabel: 'Thanh toán ngay',
-                    onPressed: () => Get.to(
-                      () => Scaffold(
-                        appBar: AppBar(
-                          iconTheme: IconThemeData(
-                            color: secondaryBGColor,
-                          ),
-                          centerTitle: false,
-                          title: Text(
-                            'Thanh toán đơn hàng',
-                            style: GoogleFonts.montserrat(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18,
-                              color: primaryTextColor,
+                  order.status == 0
+                      ? AuthButton(
+                          btnLabel: 'Thanh toán ngay',
+                          onPressed: () => Get.to(
+                            () => Scaffold(
+                              appBar: AppBar(
+                                iconTheme: IconThemeData(
+                                  color: secondaryBGColor,
+                                ),
+                                centerTitle: false,
+                                title: Text(
+                                  'Thanh toán đơn hàng',
+                                  style: GoogleFonts.montserrat(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 18,
+                                    color: primaryTextColor,
+                                  ),
+                                ),
+                              ),
+                              body: InAppWebView(
+                                initialUrlRequest: URLRequest(
+                                  url: Uri.parse(_url),
+                                ),
+                                initialOptions: InAppWebViewGroupOptions(
+                                  crossPlatform: InAppWebViewOptions(
+                                    supportZoom: false,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                        body: InAppWebView(
-                          initialUrlRequest: URLRequest(
-                            url: Uri.parse(_url),
-                          ),
-                          initialOptions: InAppWebViewGroupOptions(
-                            crossPlatform: InAppWebViewOptions(
-                              supportZoom: false,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    btnColor: Colors.green,
-                    textColor: Colors.white,
-                  ),
+                          btnColor: Colors.green,
+                          textColor: Colors.white,
+                        )
+                      : Container(),
                   SizedBox(
                     height: 8,
                   ),
-                  AuthButton(
-                    btnLabel: 'Huỷ đơn hàng',
-                    onPressed: () {},
-                    btnColor: secondaryBGColor,
-                    textColor: Colors.white,
-                  ),
+                  order.status == 0
+                      ? AuthButton(
+                          btnLabel: 'Huỷ đơn hàng',
+                          onPressed: () {},
+                          btnColor: secondaryBGColor,
+                          textColor: Colors.white,
+                        )
+                      : Container(),
                 ],
               ),
             ),
