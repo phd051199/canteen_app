@@ -12,24 +12,24 @@ jobs:
     name: Build Apps
     runs-on: macos-latest
     steps:
-#       - name: Export Release Timestamp
-#         run: echo "APP_VERSION=${{ github.event.repository.name }}_$(date +'%Y-%m-%d_%H-%m-%S')" >> $GITHUB_ENV
+      - name: Export Release Timestamp
+        run: echo "APP_VERSION=${{ github.event.repository.name }}_$(date +'%Y-%m-%d_%H-%m-%S')" >> $GITHUB_ENV
 
-#       - name: Checkout repository
-#         uses: actions/checkout@v1
+      - name: Checkout repository
+        uses: actions/checkout@v1
 
 #       - name: Set up Java
 #         uses: actions/setup-java@v1
 #         with:
 #           version: "12.x"
 
-#       - name: Set up Flutter
-#         uses: subosito/flutter-action@v1
-#         with:
-#           channel: "stable"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
 
-#       - name: Install pub Dependencies
-#         run: flutter pub get
+      - name: Install pub Dependencies
+        run: flutter pub get
 
 #       - name: Build Android App
 #         run: flutter build apk --split-per-abi
