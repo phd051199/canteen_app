@@ -1,5 +1,4 @@
 name: Build and Release Flutter Apps
-
 on:
   push:
     branches:
@@ -12,51 +11,20 @@ jobs:
     name: Build Apps
     runs-on: macos-latest
     steps:
-      - name: Export Release Timestamp
-        run: echo "APP_VERSION=${{ github.event.repository.name }}_$(date +'%Y-%m-%d_%H-%m-%S')" >> $GITHUB_ENV
-
       - name: Checkout repository
-        uses: actions/checkout@v1
-
-#       - name: Set up Java
-#         uses: actions/setup-java@v1
-#         with:
-#           version: "12.x"
-
+        uses: actions/checkout@v3
       - name: Set up Flutter
-        uses: subosito/flutter-action@v1
+        uses: subosito/flutter-action@v2.8.0
         with:
           channel: "stable"
-
       - name: Install pub Dependencies
         run: flutter pub get
-
-#       - name: Build Android App
-#         run: flutter build apk --split-per-abi
-
-#       - name: Build iOS App
-#         run: |
-#           flutter build ios --no-codesign
-#           cd build/ios/iphoneos
-#           mkdir Payload
-#           cd Payload
-#           ln -s ../Runner.app
-#           cd ..
-#           zip -r ${{ github.event.repository.name }}.ipa Payload
-
-#       - name: Release Apps
-#         uses: ncipollo/release-action@v1
-#         with:
-#           tag: ${{ env.APP_VERSION }}
-#           name: ${{ env.APP_VERSION }}
-#           token: ${{ secrets.GITHUB_TOKEN }}
-#           artifacts: "build/app/outputs/apk/release/*.apk,build/ios/iphoneos/*.ipa"
-
+        
       - name: Build release web
-        run: flutter build web
+        run: flutter build web --base-href='/${{ github.event.repository.name }}/'
 
       - name: Upload production-ready build files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3.1.0
         with:
           name: production-files
           path: ./build/web
@@ -65,16 +33,14 @@ jobs:
     needs: build
     runs-on: macos-latest
     if: github.ref == 'refs/heads/master'
-
     steps:
       - name: Download artifact
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3.0.0
         with:
           name: production-files
           path: ./build
-
       - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v3.7.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
